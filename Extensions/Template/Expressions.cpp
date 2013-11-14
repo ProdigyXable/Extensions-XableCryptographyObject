@@ -132,9 +132,12 @@ TCHAR * Extension::DecryptVigenerCipher(TCHAR * string, TCHAR * key)
 	return New;
 	}
 }
+
 TCHAR * Extension::EncryptSubstitutionCipher(TCHAR * string, TCHAR * lowercase_map, TCHAR * uppercase_map, TCHAR * number_map)
  {
-	 unsigned int string_length = _tcslen(string);
+	if(_tcslen(lowercase_map) == 26 && _tcslen(uppercase_map) == 26 && _tcslen(number_map) == 10)
+	{
+		 unsigned int string_length = _tcslen(string);
 
 
 	  TCHAR * New = (TCHAR *) Runtime.Allocate(_tcslen(string) + 1);
@@ -161,37 +164,46 @@ TCHAR * Extension::EncryptSubstitutionCipher(TCHAR * string, TCHAR * lowercase_m
 	
 	 return New;
 	 
+	}
+
+	else
+	{
+		return NULL;
+	}
  }
 
 TCHAR * Extension::DecryptSubstitutionCipher(TCHAR * string,TCHAR * lowercase_map, TCHAR * uppercase_map, TCHAR * number_map)
  {
-	 unsigned int string_length = _tcslen(string);
+	if(_tcslen(lowercase_map) == 26 && _tcslen(uppercase_map) == 26 && _tcslen(number_map)== 10)
+	{
+		 unsigned int string_length = _tcslen(string);
 
 
-	  TCHAR * New = (TCHAR *) Runtime.Allocate(_tcslen(string) + 1);
-    _tcscpy(New, string);
+		TCHAR * New = (TCHAR *) Runtime.Allocate(_tcslen(string) + 1);
+		_tcscpy(New, string);
 
-	 for(int index = 0; index < string_length; index++)
-	 {
-		 if(islower(string[index]))
+		 for(int index = 0; index < string_length; index++)
 		 {
-			 New[index] = lowercase_map[(string[index]-97)];
-		 }
+			 if(islower(string[index]))
+			 {
+				 New[index] = lowercase_map[(string[index]-97)];
+			 }
 
-		 else if(isupper(string[index]))
-		 {
-			 New[index] = uppercase_map[(string[index]-65)];
-		 }
+			 else if(isupper(string[index]))
+			 {
+				 New[index] = uppercase_map[(string[index]-65)];
+			 }
 
-		 else if(isdigit(string[index]))
-		 {
-			 New[index] = number_map[(string[index]-48)];
+			 else if(isdigit(string[index]))
+			 {
+				 New[index] = number_map[(string[index]-48)];
+			 }
 		 }
-	 }
 
 	
 	 return New;
 	 
+	}
  }
 
 TCHAR * Extension::EncryptSafeCaesarCipher(TCHAR * string, int shift)

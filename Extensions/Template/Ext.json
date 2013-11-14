@@ -2,8 +2,8 @@
     "About": {
         "Name": "Xable Cryptography Object",
         "Author": "Samuel Benton",
-        "Copyright": "Copyright (C) 2013 Xable Enterprises",
-        "Comment": "An extension used to perform basic cryptography encrpytion and decrpytion as Caesar Shifts ",
+        "Copyright": "Copyright © 2013 Xable Enterprises",
+        "Comment": "An extension used to perform basic cryptography encryption and decryption as Caesar Shifts ",
         "URL": "http://www.xable.us",
         "Help": "http://www.xable.us/xable-cryptography-object.html",
         "Identifier": "PXCC"
@@ -18,7 +18,9 @@
 			[0,"Caesar Cipher"],
 			[2,"Affine Cpher"],
 			[4,"Vigener Cipher"],
+			"Separator",
 			[6,"Substitution Cipher"],
+			"Separator",
 			[8,"Caesar Cipher [Safe]"],
 			[10,"Affine Cipher [Safe]"],
 			[12,"Vigener Cipher [Safe]"],
@@ -28,7 +30,9 @@
 			[1,"Caesar Cipher"],
 			[3,"Affine Cipher"],
 			[5,"Vigener Cipher"],
+			"Separator",
 			[7,"Substitution Cipher"],
+			"Separator",
 			[9,"Caesar Cipher [Safe]"],
 			[11,"Affine Cipher [Safe]"],
 			[13,"Vigener Cipher [Safe]"],
@@ -43,7 +47,6 @@
          "Parameters": 
 			[
                 ["Text","Message"],
-                ["Integer","Length of Message"],
 				["Integer","Shift amount"],
             ]
         },
@@ -52,7 +55,6 @@
          "Parameters": 
 			[
                 ["Text","Message"],
-                ["Integer","Length of Message"],
 				["Integer","Shift amount"],
             ]
         },
