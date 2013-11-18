@@ -70,6 +70,14 @@ public:
 	   TCHAR * LowercaseArrayFunction();
 	   TCHAR * DigitArrayFunction();
 
+
+	   void EditUppercaseArray(TCHAR * NewKey);
+	   void EditLowercaseArray(TCHAR * NewKey);
+	   void EditDigitArray(TCHAR * NewKey);
+
+	   bool ImproperKeyLength();
+
+
 	   /* These are called if there's no function linked to an ID */
 
     void Action(int ID, LPRDATA rdPtr, long param1, long param2);

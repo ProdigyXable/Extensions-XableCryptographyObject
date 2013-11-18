@@ -9,34 +9,54 @@
         "Identifier": "PXCC"
     },
     "ActionMenu": 
-	[],
+	[
+		["Edit Substitution Keys",
+			[0, "Edit Uppercase Key"],
+			[1, "Edit Lowercase Key"],
+			[2, "Edit Digit Key"],
+		],
+	],
 
-    "ConditionMenu": [],
+    "ConditionMenu": 
+	[
+		["Errors",
+			[0, "Improper Substitution Key Length"],
+		],
+	],
     "ExpressionMenu": [
 		
         ["Encrypt",
-			[0,"Caesar Cipher"],
-			[2,"Affine Cpher"],
-			[4,"Vigener Cipher"],
+			["Unsafe",
+				[0,"Caesar Cipher"],
+				[2,"Affine Cpher"],
+				[4,"Vigener Cipher"],
+			],
 			"Separator",
 			[6,"Substitution Cipher"],
 			"Separator",
-			[8,"Caesar Cipher [Safe]"],
-			[10,"Affine Cipher [Safe]"],
-			[12,"Vigener Cipher [Safe]"],
+			["Safe",
+				[8,"Caesar Cipher [Safe]"],
+				[10,"Affine Cipher [Safe]"],
+				[12,"Vigener Cipher [Safe]"],
+			],
 		],
 		"Separator",
 		["Decrypt",
-			[1,"Caesar Cipher"],
-			[3,"Affine Cipher"],
-			[5,"Vigener Cipher"],
+			["Unsafe",
+				[1,"Caesar Cipher"],
+				[3,"Affine Cipher"],
+				[5,"Vigener Cipher"],
+			],
 			"Separator",
 			[7,"Substitution Cipher"],
 			"Separator",
-			[9,"Caesar Cipher [Safe]"],
-			[11,"Affine Cipher [Safe]"],
-			[13,"Vigener Cipher [Safe]"],
+			["Safe",
+				[9,"Caesar Cipher [Safe]"],
+				[11,"Affine Cipher [Safe]"],
+				[13,"Vigener Cipher [Safe]"],
+			],
 		],
+		"Separator",
 		["Substitution Keys",
 			[14, "Return Uppercase Key"],
 			[15, "Return Lowercase Key"],
@@ -44,8 +64,34 @@
 		],
 		"Separator",
     ],
-    "Actions": [],
-    "Conditions": [],
+    "Actions": 
+	[
+		{	"Title": "Change Uppercase Substitution Key to %0",
+			"Parameters":
+			[
+				["Text", "Uppercase Substitution Key (26 chars long)"],
+			]
+		},
+		{	"Title": "ChangeLowercase Substitution Key to %0",
+			"Parameters":
+			[
+				["Text", "Lowerrcase Substitution Key (26 chars long)"],
+			]
+		},
+		{	"Title": "Change Digit Substitution Key to %0",
+			"Parameters":
+			[
+				["Text", "Digit Substitution Key (10 chars long)"],
+			]
+		},
+	],
+    "Conditions": 
+	[
+		{
+			"Title": "%o : Error: Improper Substitution Key Length",
+           "Triggered": true
+        },
+	],
     "Expressions": [
         {"Title": "EncryptCaesarCipher(",
          "Returns": "Text",

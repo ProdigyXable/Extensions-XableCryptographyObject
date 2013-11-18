@@ -32,11 +32,15 @@ Extension::Extension(LPRDATA _rdPtr, LPEDATA edPtr, fpcob cobPtr)
 	LinkExpression(15, LowercaseArrayFunction);
 	LinkExpression(16, DigitArrayFunction);
 
+	LinkAction(0, EditUppercaseArray);
+	LinkAction(1, EditLowercaseArray);
+	LinkAction(2, EditDigitArray);
+
+	LinkCondition(0, ImproperKeyLength);
+
 	strcpy(Extension::UppercaseArray, edPtr->UppercaseArray);
 
-
 	strcpy(Extension::LowercaseArray, edPtr->LowercaseArray);
-
 
 	strcpy(Extension::DigitArray, edPtr->DigitArray);
 
