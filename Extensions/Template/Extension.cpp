@@ -26,8 +26,19 @@ Extension::Extension(LPRDATA _rdPtr, LPEDATA edPtr, fpcob cobPtr)
 	LinkExpression(9, DecryptSafeCaesarCipher);
 	LinkExpression(10, EncryptSafeAffineShift);
 	LinkExpression(11, DecryptSafeAffineShift);
-//	LinkExpression(12, EncryptSafeVigenerCipher);
-//	LinkExpression(13, DecryptSafeVigenerCipher);
+	LinkExpression(12, EncryptSafeVigenerCipher);
+	LinkExpression(13, DecryptSafeVigenerCipher);
+	LinkExpression(14, UppercaseArrayFunction);
+	LinkExpression(15, LowercaseArrayFunction);
+	LinkExpression(16, DigitArrayFunction);
+
+	strcpy(Extension::UppercaseArray, edPtr->UppercaseArray);
+
+
+	strcpy(Extension::LowercaseArray, edPtr->LowercaseArray);
+
+
+	strcpy(Extension::DigitArray, edPtr->DigitArray);
 
 
 

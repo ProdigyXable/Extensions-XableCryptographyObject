@@ -25,6 +25,10 @@ enum {
 //	PROPID_CHECK,
 //	PROPID_COMBO,
 //	PROPID_COLOR,
+	SubstitutionKeys,
+	UpperCharArray,
+	LowerCharArray,
+	DigitArray,
 
 };
 
@@ -50,7 +54,10 @@ PropData Properties[] = {
 //	PropData_CheckBox	(PROPID_CHECK,		IDS_PROP_CHECK,			IDS_PROP_CHECK_INFO),
 //	PropData_ComboBox	(PROPID_COMBO,		IDS_PROP_COMBO,			IDS_PROP_COMBO,	ComboList),
 //	PropData_Color		(PROPID_COLOR,		IDS_PROP_COLOR,			IDS_PROP_COLOR_INFO),
-
+		PropData_Group		(SubstitutionKeys,		(int)"Substitution Keys",					(int)"Properties for Substitutions"),
+		PropData_EditString	(UpperCharArray,		(int)"Uppercase Substitution Key",			(int)" "),
+		PropData_EditString	(LowerCharArray,		(int)"Lowercase Substitution Key",			(int)" "),
+		PropData_EditString	(DigitArray,			(int)"Digit Substitution Key",				(int)" "),
 
 	// End of table (required)
 	PropData_End()
@@ -58,7 +65,6 @@ PropData Properties[] = {
 
 
 #endif // !defined(RUN_ONLY)
-
 
 // ============================================================================
 //
@@ -106,11 +112,15 @@ int WINAPI DLLExport CreateObject(mv _far *mV, fpLevObj loPtr, LPEDATA edPtr)
 		// Set default object settings
 //		edPtr->swidth = 48;
 //		edPtr->sheight = 48;
-
+		
+		// Auto Fills the Substitution Keys
+		strcpy(edPtr->UppercaseArray, "ABCDEFGHIJKLMNOPQRSTUVWXYZ\0");
+		strcpy(edPtr->LowercaseArray, "abcdefghijklmnopqrstuvwxyz\0");
+		strcpy(edPtr->DigitArray, "0123456789\0");
         return 0;
 	}
 #endif // !defined(RUN_ONLY)
-
+	
 	// Error
 	return -1;
 }
@@ -403,20 +413,24 @@ LPVOID WINAPI DLLExport GetPropValue(LPMV mV, LPEDATA edPtr, UINT nPropID)
 #ifndef RUN_ONLY
 	// Example
 	// -------
-//	switch (nPropID) {
+	switch (nPropID) {
 //
 //	// Returns a color.
 //	case PROPID_COLOR:
 //		return new CPropDWordValue(edPtr->dwColor);
 //
-//	// Returns a string
-//	case PROPID_TEXT:
-//		return new CPropDataValue(&edPtr->szText[0]);
+// Returns a string
+	case UpperCharArray:
+		return new CPropDataValue((LPSTR)&edPtr->UppercaseArray);
+	case LowerCharArray:
+		return new CPropDataValue((LPSTR)&edPtr->LowercaseArray);
+	case DigitArray:
+		return new CPropDataValue((LPSTR)&edPtr->DigitArray);
 //
 //	// Returns the value of the combo box
 //	case PROPID_COMBO:
 //		return new CPropDWordValue(edPtr->nComboIndex);
-//	}
+	}
 
 #endif // !defined(RUN_ONLY)
 	return NULL;
@@ -456,7 +470,8 @@ void WINAPI DLLExport SetPropValue(LPMV mV, LPEDATA edPtr, UINT nPropID, LPVOID 
 
 	// Example
 	// -------
-//	switch (nPropID) {
+	switch (nPropID) 
+	{
 //
 //	case PROPID_COMBO:
 //		// Simply grab the value
@@ -468,36 +483,54 @@ void WINAPI DLLExport SetPropValue(LPMV mV, LPEDATA edPtr, UINT nPropID, LPVOID 
 //		edPtr->dwColor = ((CPropDWordValue*)pValue)->m_dwValue;
 //		break;
 
-//	case PROPID_TEXT:
-//		{
+	case UpperCharArray:
+		{
 //			// Gets the string
-//			LPSTR pStr = (LPSTR)((CPropDataValue*)pValue)->m_pData;
+			LPSTR pStr = (LPSTR)((CPropDataValue*)pValue)->m_pData;
 //
 //			// You can simply poke the string if your EDITDATA structure has a fixed size,
 //			// or have an adaptive size of structure like below
 //
 //			// If the length is different
-//			if (strlen(pStr)!=strlen(edPtr->text))
-//			{
-//				// Asks MMF to reallocate the structure with the new size
-//				LPEDATA pNewPtr = (LPEDATA)mvReAllocEditData(mV, edPtr, sizeof(EDITDATA)+strlen(pStr));
-//				
-//				// If reallocation worked
-//				if (pNewPtr!=NULL)
-//				{
-//					// Copy the string
-//					edPtr=pNewPtr;
-//					strcpy(edPtr->text, pStr);
-//				}
-//			}
-//			else
-//			{	
-//				// Same size : simply copy
-//				strcpy(edPtr->text, pStr);
-//			}
-//		}
-//		break;
-//	}
+			if(strlen(pStr) == 26)
+			{	
+				// Same size : simply copy
+				strcpy(edPtr->UppercaseArray, pStr);
+			}
+		}
+		break;
+		case LowerCharArray:
+		{
+//			// Gets the string
+			LPSTR pStr = (LPSTR)((CPropDataValue*)pValue)->m_pData;
+//
+//			// You can simply poke the string if your EDITDATA structure has a fixed size,
+//			// or have an adaptive size of structure like below
+//
+			if(strlen(pStr) == 26)
+			{	
+				// Same size : simply copy
+				strcpy(edPtr->LowercaseArray, pStr);
+			}
+		}
+		break;
+		case DigitArray:
+		{
+//			// Gets the string
+			LPSTR pStr = (LPSTR)((CPropDataValue*)pValue)->m_pData;
+//
+//			// You can simply poke the string if your EDITDATA structure has a fixed size,
+//			// or have an adaptive size of structure like below
+//
+//			// If the length is different
+			if(strlen(pStr) == 10)
+			{	
+				// Same size : simply copy
+				strcpy(edPtr->DigitArray, pStr);
+			}
+		}
+		break;
+	}
 
 	// You may want to have your object redrawn in the frame editor after the modifications,
 	// in this case, just call this function

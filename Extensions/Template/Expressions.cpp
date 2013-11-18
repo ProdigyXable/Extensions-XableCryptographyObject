@@ -346,7 +346,7 @@ TCHAR * Extension::DecryptSafeAffineShift(TCHAR * string, int offset, int multip
 	return New;
 }
 
-/*TCHAR * Extension::EncryptSafeVigenerCipher(TCHAR * string, TCHAR * key)
+TCHAR * Extension::EncryptSafeVigenerCipher(TCHAR * string, TCHAR * key)
 {
 	unsigned int string_length = _tcslen(string);
 	unsigned int key_length = _tcslen(key);
@@ -421,4 +421,21 @@ TCHAR * Extension::DecryptSafeVigenerCipher(TCHAR * string, TCHAR * key)
 	return New;
 	}
 }
-*/
+
+TCHAR * Extension::UppercaseArrayFunction()
+{
+	
+	
+	return Runtime.CopyString((TCHAR *)Extension::UppercaseArray);
+}
+TCHAR * Extension::LowercaseArrayFunction()
+{
+	
+	return Runtime.CopyString((TCHAR *)Extension::LowercaseArray);
+}
+TCHAR * Extension::DigitArrayFunction()
+{
+
+	
+	return Runtime.CopyString((TCHAR *)Extension::DigitArray);
+}

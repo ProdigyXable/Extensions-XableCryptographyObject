@@ -30,7 +30,9 @@ public:
 
     // int MyVariable;
 
-
+	char UppercaseArray[27];
+	char LowercaseArray[27];
+	char DigitArray[11];
 
 
     /*  Add your actions, conditions and expressions as real class member
@@ -61,8 +63,12 @@ public:
 	   TCHAR * EncryptSafeAffineShift(TCHAR * string,int offset, int multiplier);
 	   TCHAR * DecryptSafeAffineShift(TCHAR * string, int offset, int multiplier);
 
-//	   TCHAR * EncryptSafeVigenerCipher(TCHAR * string, TCHAR * key);
-//	   TCHAR * DecryptSafeVigenerCipher(TCHAR * string, TCHAR * key);
+	   TCHAR * EncryptSafeVigenerCipher(TCHAR * string, TCHAR * key);
+	   TCHAR * DecryptSafeVigenerCipher(TCHAR * string, TCHAR * key);
+
+	   TCHAR * UppercaseArrayFunction();
+	   TCHAR * LowercaseArrayFunction();
+	   TCHAR * DigitArrayFunction();
 
 	   /* These are called if there's no function linked to an ID */
 

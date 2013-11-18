@@ -14,6 +14,10 @@ struct EDITDATA
 	// Header - required
 	extHeader		eHeader;
 
+	char UppercaseArray[27];
+	char LowercaseArray[27];
+	char DigitArray[11];
+
 	// Object's data
 //	short			swidth;
 //	short			sheight;

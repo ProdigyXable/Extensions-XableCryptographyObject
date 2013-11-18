@@ -1,6 +1,6 @@
 {
     "About": {
-        "Name": "Xable Cryptography Object",
+        "Name": "Xable Crypt. Object",
         "Author": "Samuel Benton",
         "Copyright": "Copyright © 2013 Xable Enterprises",
         "Comment": "An extension used to perform basic cryptography encryption and decryption as Caesar Shifts ",
@@ -36,6 +36,11 @@
 			[9,"Caesar Cipher [Safe]"],
 			[11,"Affine Cipher [Safe]"],
 			[13,"Vigener Cipher [Safe]"],
+		],
+		["Substitution Keys",
+			[14, "Return Uppercase Key"],
+			[15, "Return Lowercase Key"],
+			[16, "Return Digit Key"],
 		],
 		"Separator",
     ],
@@ -165,8 +170,15 @@
 				
             ]
         },
-		
-		
+		 {"Title": "ReturnUppercaseKey(",
+         "Returns": "Text",
+        },
+		{"Title": "ReturnLowercaseKey(",
+         "Returns": "Text",
+        },
+		{"Title": "ReturnNumericKey(",
+         "Returns": "Text",
+        },
       
     ]
 }
