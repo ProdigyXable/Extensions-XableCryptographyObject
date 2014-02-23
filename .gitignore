@@ -18,6 +18,12 @@ local.properties
 
 # Custom Ignores
 MFX/
+ReleaseEditor/
+ReleaseRuntime/
+ReleaseRuntimeUnicode/
+Runtime HWA/
+Edittime HWA/
+ReleaseEditorUnicode/
 
 # External tool builders
 .externalToolBuilders/
