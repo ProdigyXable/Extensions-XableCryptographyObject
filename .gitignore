@@ -17,10 +17,10 @@ local.properties
 .loadpath
 
 # Custom Ignores
-Release*/
-Edittime*/
-MFX/
-Runtime*/
+Extension/Template/Release*/
+Extension/Template/Edittime*/
+Extension/Template/MFX/
+Extension/Template/Runtime*/
 
 # External tool builders
 .externalToolBuilders/
