@@ -17,10 +17,7 @@ local.properties
 .loadpath
 
 # Custom Ignores
-*/Release*/*
-*/Edittime*/*
-*/MFX/*
-*/Runtime*/*
+MFX/
 
 # External tool builders
 .externalToolBuilders/
