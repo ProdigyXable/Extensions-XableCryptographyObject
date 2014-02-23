@@ -1,40 +1,8 @@
-﻿Build started 11/18/2013 4:07:57 PM.
+﻿Build started 2/23/2014 4:57:36 AM.
      1>Project "C:\Users\Xable\Documents\GitHub\Extensions-XableCryptographyObject\Extensions\Template\Template.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\..\Inc /I.\ /Zi /nologo /W3 /WX- /O1 /Ob1 /Oy- /D COXSDK /D IN_EXT_VERSION2 /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D _WINDOWS /D RUN_ONLY /D _VC80_UPGRADE=0x0600 /D _WINDLL /GF /Gm /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Runtime HWA\\" /Fd"Runtime HWA\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Lib\Edif.Edittime.cpp ..\..\Lib\Edif.General.cpp ..\..\Lib\Edif.Runtime.cpp ..\..\Lib\Edif.cpp ..\..\Lib\ObjectSelection.cpp Actions.cpp Conditions.cpp Edittime.cpp Expressions.cpp Extension.cpp General.cpp Runtime.cpp
-         Extension.cpp
-         Conditions.cpp
-         Actions.cpp
-         Generating Code...
-         Compiling...
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\..\Inc /I.\ /Zi /nologo /W3 /WX- /O1 /Ob1 /Oy- /D COXSDK /D IN_EXT_VERSION2 /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D _WINDOWS /D RUN_ONLY /D _VC80_UPGRADE=0x0600 /D _WINDLL /GF /Gm /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Runtime HWA\\" /Fd"Runtime HWA\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Expressions.cpp
          Expressions.cpp
-     1>Expressions.cpp(17): warning C4018: '<' : signed/unsigned mismatch
-     1>Expressions.cpp(38): warning C4018: '<' : signed/unsigned mismatch
-     1>Expressions.cpp(58): warning C4018: '<' : signed/unsigned mismatch
-     1>Expressions.cpp(78): warning C4018: '<' : signed/unsigned mismatch
-     1>Expressions.cpp(102): warning C4018: '<' : signed/unsigned mismatch
-     1>Expressions.cpp(127): warning C4018: '<' : signed/unsigned mismatch
-     1>Expressions.cpp(146): warning C4018: '<' : signed/unsigned mismatch
-     1>Expressions.cpp(185): warning C4018: '<' : signed/unsigned mismatch
-     1>Expressions.cpp(221): warning C4018: '<' : signed/unsigned mismatch
-     1>Expressions.cpp(256): warning C4018: '<' : signed/unsigned mismatch
-     1>Expressions.cpp(290): warning C4018: '<' : signed/unsigned mismatch
-     1>Expressions.cpp(327): warning C4018: '<' : signed/unsigned mismatch
-     1>Expressions.cpp(364): warning C4018: '<' : signed/unsigned mismatch
-     1>Expressions.cpp(402): warning C4018: '<' : signed/unsigned mismatch
-         Edif.General.cpp
-         Generating Code...
-     1>c:\users\xable\documents\github\extensions-xablecryptographyobject\extensions\template\expressions.cpp(207): warning C4715: 'Extension::DecryptSubstitutionCipher' : not all control paths return a value
-         Skipping... (no relevant changes detected)
-         Runtime.cpp
-         General.cpp
-         Edittime.cpp
-         ObjectSelection.cpp
-         Edif.cpp
-         Edif.Runtime.cpp
-         Edif.Edittime.cpp
-       ResourceCompile:
-         C:\Program Files (x86)\Windows Kits\8.0\bin\x86\rc.exe /D NDEBUG /D RUN_ONLY /D _VC80_UPGRADE=0x0600 /l"0x0409" /I..\..\Inc /nologo /fo"Runtime HWA\Ext.res" Ext.rc 
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.CppBuild.targets(1137,5): warning MSB8012: TargetPath(C:\Users\Xable\Documents\GitHub\Extensions-XableCryptographyObject\Extensions\Template\Runtime HWA\XableCryptographyObject.mfx) does not match the Linker's OutputFile property value (C:\Users\Xable\Documents\GitHub\Extensions-XableCryptographyObject\Extensions\Template\MFX\Data\Runtime\HWA\XableCryptographyObject.mfx). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Xable\Documents\GitHub\Extensions-XableCryptographyObject\Extensions\Template\\MFX\Data\Runtime\HWA\XableCryptographyObject.mfx" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib ..\..\lib\mmfs2.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:".\Ext.def" /MANIFEST:NO /PDB:"Runtime HWA\Template.pdb" /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"Runtime HWA\Template.lib" /MACHINE:X86 /SAFESEH /DLL "Runtime HWA\Ext.res"
@@ -68,4 +36,4 @@ C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.CppCommon.targe
 
 Build FAILED.
 
-Time Elapsed 00:00:07.69
+Time Elapsed 00:00:01.99

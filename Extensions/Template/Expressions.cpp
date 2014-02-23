@@ -14,7 +14,7 @@ TCHAR * Extension::EncryptCaesarCipher(TCHAR * string, int shift)
 		return string;
 	}
 
-	for(int index = 0; index < length; index++)
+	for(unsigned int index = 0; index < length; index++)
 	{
 		New[index] += shift;
 	}
@@ -35,7 +35,7 @@ TCHAR * Extension::DecryptCaesarCipher(TCHAR * string, int shift)
 	}
 
 
-	for(int index = 0; index < length; index++)
+	for(unsigned int index = 0; index < length; index++)
 	{
 		New[index] -= shift;
 	}
@@ -55,7 +55,7 @@ TCHAR * Extension::EncryptAffineShift(TCHAR * string,  int offset, int multiplie
 		return string;
 	}
 
-	for(int index = 0; index < length; index++)
+	for(unsigned int index = 0; index < length; index++)
 	{
 		New[index] += (multiplier*(index+offset));
 	}
@@ -75,7 +75,7 @@ TCHAR * Extension::DecryptAffineShift(TCHAR * string, int offset, int multiplier
 		return string;
 	}
 
-	for(int index = 0; index < length; index++)
+	for(unsigned int index = 0; index < length; index++)
 	{
 		New[index] -= (multiplier*(index+offset));
 	}
@@ -99,7 +99,7 @@ TCHAR * Extension::EncryptVigenerCipher(TCHAR * string, TCHAR * key)
 	else
 	{
 
-		for(int index = 0; index < string_length; index++)
+		for(unsigned int index = 0; index < string_length; index++)
 		{
 			New[index] +=  abs(toupper(key[index % key_length])-64);
 		}
@@ -124,7 +124,7 @@ TCHAR * Extension::DecryptVigenerCipher(TCHAR * string, TCHAR * key)
 	else
 	{
 
-		for(int index = 0; index < string_length; index++)
+		for(unsigned int index = 0; index < string_length; index++)
 		{
 			New[index] -=  abs(toupper(key[index % key_length])-64);
 		}
@@ -143,7 +143,7 @@ TCHAR * Extension::EncryptSubstitutionCipher(TCHAR * string, TCHAR * lowercase_m
 	  TCHAR * New = (TCHAR *) Runtime.Allocate(_tcslen(string) + 1);
     _tcscpy(New, string);
 
-	 for(int index = 0; index < string_length; index++)
+	 for(unsigned int index = 0; index < string_length; index++)
 	 {
 		 if(islower(string[index]))
 		 {
@@ -182,7 +182,7 @@ TCHAR * Extension::DecryptSubstitutionCipher(TCHAR * string,TCHAR * lowercase_ma
 		TCHAR * New = (TCHAR *) Runtime.Allocate(_tcslen(string) + 1);
 		_tcscpy(New, string);
 
-		 for(int index = 0; index < string_length; index++)
+		 for(unsigned int index = 0; index < string_length; index++)
 		 {
 			 if(islower(string[index]))
 			 {
@@ -204,6 +204,11 @@ TCHAR * Extension::DecryptSubstitutionCipher(TCHAR * string,TCHAR * lowercase_ma
 	 return New;
 	 
 	}
+
+	else
+	{
+		return NULL;
+	}
  }
 
 TCHAR * Extension::EncryptSafeCaesarCipher(TCHAR * string, int shift)
@@ -218,7 +223,7 @@ TCHAR * Extension::EncryptSafeCaesarCipher(TCHAR * string, int shift)
 		return string;
 	}
 
-	for(int index = 0; index < length; index++)
+	for(unsigned int index = 0; index < length; index++)
 	{
 		if(isupper(string[index]))
 		{
@@ -253,7 +258,7 @@ TCHAR * Extension::DecryptSafeCaesarCipher(TCHAR * string, int shift)
 	}
 
 
-	for(int index = 0; index < length; index++)
+	for(unsigned int index = 0; index < length; index++)
 	{
 		
 		if(isupper(string[index]))
@@ -287,7 +292,7 @@ TCHAR * Extension::EncryptSafeAffineShift(TCHAR * string, int offset, int multip
 		return string;
 	}
 
-	for(int index = 0; index < length; index++)
+	for(unsigned int index = 0; index < length; index++)
 	{
 		if(isupper(string[index]))
 		{
@@ -324,7 +329,7 @@ TCHAR * Extension::DecryptSafeAffineShift(TCHAR * string, int offset, int multip
 		return string;
 	}
 
-	for(int index = 0; index < length; index++)
+	for(unsigned int index = 0; index < length; index++)
 	{
 		if(isupper(string[index]))
 		{
@@ -361,7 +366,7 @@ TCHAR * Extension::EncryptSafeVigenerCipher(TCHAR * string, TCHAR * key)
 	else
 	{
 
-		for(int index = 0; index < string_length; index++)
+		for(unsigned int index = 0; index < string_length; index++)
 		{
 			if(isupper(string[index]))
 			{
@@ -399,7 +404,7 @@ TCHAR * Extension::DecryptSafeVigenerCipher(TCHAR * string, TCHAR * key)
 	else
 	{
 
-		for(int index = 0; index < string_length; index++)
+		for(unsigned int index = 0; index < string_length; index++)
 		{
 			if(isupper(string[index]))
 			{
