@@ -207,7 +207,7 @@ TCHAR * Extension::DecryptSubstitutionCipher(TCHAR * string,TCHAR * lowercase_ma
 
 	else
 	{
-		return NULL;
+		return 0;
 	}
  }
 

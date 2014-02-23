@@ -17,10 +17,10 @@ local.properties
 .loadpath
 
 # Custom Ignores
-*/Release*/
-*/Edittime*/
-*/MFX/
-*/Runtime*/
+*/Release*/*
+*/Edittime*/*
+*/MFX/*
+*/Runtime*/*
 
 # External tool builders
 .externalToolBuilders/
@@ -219,3 +219,7 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+*.obj
+*.exp
+*.log
+*.tlog
