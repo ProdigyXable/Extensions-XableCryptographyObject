@@ -214,9 +214,5 @@ pip-log.txt
 #Translations
 *.mo
 
-#Mr Developer
-.mr.developer.cfg
-*.obj
-*.exp
-*.log
-*.tlog
+/MFX/**/*
+MFX/**/*
