@@ -30,9 +30,9 @@ public:
 
     // int MyVariable;
 
-	char UppercaseArray[27];
-	char LowercaseArray[27];
-	char DigitArray[11];
+	TCHAR UppercaseArray[27];
+	TCHAR LowercaseArray[27];
+	TCHAR DigitArray[11];
 
 
     /*  Add your actions, conditions and expressions as real class member
@@ -66,9 +66,9 @@ public:
 	   TCHAR * EncryptSafeVigenerCipher(TCHAR * string, TCHAR * key);
 	   TCHAR * DecryptSafeVigenerCipher(TCHAR * string, TCHAR * key);
 
-	   TCHAR * UppercaseArrayFunction();
-	   TCHAR * LowercaseArrayFunction();
-	   TCHAR * DigitArrayFunction();
+	   TCHAR * UppercaseArrayKey();
+	   TCHAR * LowercaseArrayKey();
+	   TCHAR * DigitArrayKey();
 
 
 	   void EditUppercaseArray(TCHAR * NewKey);

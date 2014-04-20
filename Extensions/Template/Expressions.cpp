@@ -18,6 +18,7 @@ TCHAR * Extension::EncryptCaesarCipher(TCHAR * string, int shift)
 	{
 		New[index] += shift;
 	}
+	
 
 	return New;    
 }
@@ -101,7 +102,7 @@ TCHAR * Extension::EncryptVigenerCipher(TCHAR * string, TCHAR * key)
 
 		for(unsigned int index = 0; index < string_length; index++)
 		{
-			New[index] +=  abs(toupper(key[index % key_length])-64);
+			New[index] +=  abs(toupper(key[index % key_length])-A_index_value);
 		}
 
 		return New;
@@ -126,7 +127,7 @@ TCHAR * Extension::DecryptVigenerCipher(TCHAR * string, TCHAR * key)
 
 		for(unsigned int index = 0; index < string_length; index++)
 		{
-			New[index] -=  abs(toupper(key[index % key_length])-64);
+			New[index] -=  abs(toupper(key[index % key_length])-A_index_value);
 		}
 
 	return New;
@@ -135,7 +136,7 @@ TCHAR * Extension::DecryptVigenerCipher(TCHAR * string, TCHAR * key)
 
 TCHAR * Extension::EncryptSubstitutionCipher(TCHAR * string, TCHAR * lowercase_map, TCHAR * uppercase_map, TCHAR * number_map)
  {
-	if(_tcslen(lowercase_map) == 26 && _tcslen(uppercase_map) == 26 && _tcslen(number_map) == 10)
+	if(_tcslen(lowercase_map) == LowerCaseArrayLength && _tcslen(uppercase_map) == UpperCaseArrayLength && _tcslen(number_map) == NumberArrayLength)
 	{
 		 unsigned int string_length = _tcslen(string);
 
@@ -147,17 +148,17 @@ TCHAR * Extension::EncryptSubstitutionCipher(TCHAR * string, TCHAR * lowercase_m
 	 {
 		 if(islower(string[index]))
 		 {
-			 New[index] = lowercase_map[(string[index]-97)];
+			 New[index] = lowercase_map[(string[index]-a_index_value)];
 		 }
 
 		 else if(isupper(string[index]))
 		 {
-			 New[index] = uppercase_map[(string[index]-65)];
+			 New[index] = uppercase_map[(string[index]-A_index_value)];
 		 }
 
 		 else if(isdigit(string[index]))
 		 {
-			 New[index] = number_map[(string[index]-48)];
+			 New[index] = number_map[(string[index]-zero_index_value)];
 		 }
 	 }
 
@@ -174,7 +175,7 @@ TCHAR * Extension::EncryptSubstitutionCipher(TCHAR * string, TCHAR * lowercase_m
 
 TCHAR * Extension::DecryptSubstitutionCipher(TCHAR * string,TCHAR * lowercase_map, TCHAR * uppercase_map, TCHAR * number_map)
  {
-	if(_tcslen(lowercase_map) == 26 && _tcslen(uppercase_map) == 26 && _tcslen(number_map)== 10)
+	if(_tcslen(lowercase_map) == LowerCaseArrayLength && _tcslen(uppercase_map) == UpperCaseArrayLength && _tcslen(number_map)== NumberArrayLength)
 	{
 		 unsigned int string_length = _tcslen(string);
 
@@ -186,17 +187,17 @@ TCHAR * Extension::DecryptSubstitutionCipher(TCHAR * string,TCHAR * lowercase_ma
 		 {
 			 if(islower(string[index]))
 			 {
-				 New[index] = lowercase_map[(string[index]-97)];
+				 New[index] = lowercase_map[(string[index]-a_index_value)];
 			 }
 
 			 else if(isupper(string[index]))
 			 {
-				 New[index] = uppercase_map[(string[index]-65)];
+				 New[index] = uppercase_map[(string[index]-A_index_value)];
 			 }
 
 			 else if(isdigit(string[index]))
 			 {
-				 New[index] = number_map[(string[index]-48)];
+				 New[index] = number_map[(string[index]-zero_index_value)];
 			 }
 		 }
 
@@ -227,17 +228,17 @@ TCHAR * Extension::EncryptSafeCaesarCipher(TCHAR * string, int shift)
 	{
 		if(isupper(string[index]))
 		{
-			New[index] = (((string[index]-65)+shift) % 26) + 65;
+			New[index] = (((string[index]-A_index_value)+shift) % UpperCaseArrayLength) + A_index_value;
 		}
 
 		else if(islower(string[index]))
 		{
-			New[index] = (((string[index]-97)+shift) % 26) +97;
+			New[index] = (((string[index]-a_index_value)+shift) % LowerCaseArrayLength) +a_index_value;
 		}
 
 		else if(isdigit(string[index]))
 		{
-			New[index] = (((string[index]-48)+shift) % 10) + 48;
+			New[index] = (((string[index]-zero_index_value)+shift) % NumberArrayLength) + zero_index_value;
 		}
 	}
 
@@ -263,17 +264,17 @@ TCHAR * Extension::DecryptSafeCaesarCipher(TCHAR * string, int shift)
 		
 		if(isupper(string[index]))
 		{
-			New[index] = (((string[index]-65)+(26-(shift % 26))) % 26) + 65;
+			New[index] = (((string[index]-A_index_value)+(UpperCaseArrayLength-(shift % UpperCaseArrayLength))) % UpperCaseArrayLength) + A_index_value;
 		}
 
 		else if(islower(string[index]))
 		{
-			New[index] = (((string[index]-97)+(26-(shift % 26))) % 26) +97;
+			New[index] = (((string[index]-a_index_value)+(LowerCaseArrayLength-(shift % LowerCaseArrayLength))) % LowerCaseArrayLength) +a_index_value;
 		}
 
 		else if(isdigit(string[index]))
 		{
-			New[index] = (((string[index]-48)+(10-(shift % 10))) % 10) + 48;
+			New[index] = (((string[index]-zero_index_value)+(NumberArrayLength-(shift % NumberArrayLength))) % NumberArrayLength) + zero_index_value;
 		}
 	}
 
@@ -296,18 +297,18 @@ TCHAR * Extension::EncryptSafeAffineShift(TCHAR * string, int offset, int multip
 	{
 		if(isupper(string[index]))
 		{
-			New[index] = (((string[index]-65)+((multiplier*(index+offset))) % 26) % 26) + 65;
+			New[index] = (((string[index]-A_index_value)+((multiplier*(index+offset))) % UpperCaseArrayLength) % UpperCaseArrayLength) + A_index_value;
 		}	
 
 		else if(islower(string[index]))
 		{
-			New[index] = (((string[index]-97)+((multiplier*(index+offset))) % 26) % 26) + 97;
+			New[index] = (((string[index]-a_index_value)+((multiplier*(index+offset))) % LowerCaseArrayLength) % LowerCaseArrayLength) + a_index_value;
 		}
 
 		else if(isdigit(string[index]))
 		{
 						
-			New[index] = (((string[index]-48)+((multiplier*(index+offset))) % 10) % 10) + 48;
+			New[index] = (((string[index]-zero_index_value)+((multiplier*(index+offset))) % NumberArrayLength) % NumberArrayLength) + zero_index_value;
 		}
 
 	}
@@ -322,8 +323,6 @@ TCHAR * Extension::DecryptSafeAffineShift(TCHAR * string, int offset, int multip
 	TCHAR * New = (TCHAR *) Runtime.Allocate(_tcslen(string) + 1);
     _tcscpy(New, string);
 
-	char * foo = (char *) Runtime.Allocate(length);
-
 	if(length <= 0 || multiplier == 0)
 	{
 		return string;
@@ -333,18 +332,18 @@ TCHAR * Extension::DecryptSafeAffineShift(TCHAR * string, int offset, int multip
 	{
 		if(isupper(string[index]))
 		{
-			New[index] = (((string[index]-65)+(26-(multiplier*(index+offset))) % 26) % 26) + 65;
+			New[index] = (((string[index]-A_index_value)+(UpperCaseArrayLength-(multiplier*(index+offset))) % UpperCaseArrayLength) % UpperCaseArrayLength) + A_index_value;
 		}	
 
 		else if(islower(string[index]))
 		{
-			New[index] = (((string[index]-97)+(26-(multiplier*(index+offset))) % 26) % 26) + 97;
+			New[index] = (((string[index]-a_index_value)+(LowerCaseArrayLength-(multiplier*(index+offset))) % LowerCaseArrayLength) % LowerCaseArrayLength) + a_index_value;
 		}
 
 		else if(isdigit(string[index]))
 		{
 						
-			New[index] = (((string[index]-48)+(10-(multiplier*(index+offset))) % 10) % 10) + 48;
+			New[index] = (((string[index]-zero_index_value)+(NumberArrayLength-(multiplier*(index+offset))) % NumberArrayLength) % NumberArrayLength) + zero_index_value;
 		}
 	}
 
@@ -370,17 +369,17 @@ TCHAR * Extension::EncryptSafeVigenerCipher(TCHAR * string, TCHAR * key)
 		{
 			if(isupper(string[index]))
 			{
-				New[index] =  ((string[index]-64)+(toupper(key[index % key_length])- 64) % 26) + 64;
+				New[index] =  ((string[index]-A_index_value)+(toupper(key[index % key_length])- A_index_value) % UpperCaseArrayLength) + A_index_value;
 			}
 
 			else if(islower(string[index]))
 			{
-				New[index] =  ((string[index]-97)+(tolower(key[index % key_length])- 97) % 26) + 97;
+				New[index] =  ((string[index]-a_index_value)+(tolower(key[index % key_length])- a_index_value) % LowerCaseArrayLength) + a_index_value;
 			}
 
 			else if(isdigit(string[index]))
 			{
-				New[index] =  ((string[index]-48)+(toupper(key[index % key_length])- 48) % 10) + 48;
+				New[index] =  ((string[index]-zero_index_value)+(toupper(key[index % key_length])- zero_index_value) % NumberArrayLength) + zero_index_value;
 			}
 
 		}
@@ -408,17 +407,17 @@ TCHAR * Extension::DecryptSafeVigenerCipher(TCHAR * string, TCHAR * key)
 		{
 			if(isupper(string[index]))
 			{
-				New[index] =  ((string[index]-64)+(26-(toupper(key[index % key_length])- 64)) % 26) + 64;
+				New[index] =  ((string[index]- A_index_value)+(UpperCaseArrayLength-(toupper(key[index % key_length]) - A_index_value)) % UpperCaseArrayLength) + UpperCaseArrayLength;
 			}
 
 			else if(islower(string[index]))
 			{
-				New[index] =  ((string[index]-97)+(26-(tolower(key[index % key_length])- 97)) % 26) + 97;
+				New[index] =  ((string[index]- a_index_value)+(LowerCaseArrayLength-(tolower(key[index % key_length]) - a_index_value)) % LowerCaseArrayLength) + a_index_value;
 			}
 
 			else if(isdigit(string[index]))
 			{
-				New[index] =  ((string[index]-48)+(10-(toupper(key[index % key_length])- 48)) % 10) + 48;
+				New[index] =  ((string[index]- zero_index_value)+(NumberArrayLength-(toupper(key[index % key_length]) - zero_index_value)) % NumberArrayLength) + zero_index_value;
 			}
 
 		}
@@ -427,20 +426,15 @@ TCHAR * Extension::DecryptSafeVigenerCipher(TCHAR * string, TCHAR * key)
 	}
 }
 
-TCHAR * Extension::UppercaseArrayFunction()
+TCHAR * Extension::UppercaseArrayKey()
 {
-	
-	
-	return Runtime.CopyString((TCHAR *)Extension::UppercaseArray);
+	return	Runtime.CopyString(UpperCaseArray);
 }
-TCHAR * Extension::LowercaseArrayFunction()
+TCHAR * Extension::LowercaseArrayKey()
 {
-	
-	return Runtime.CopyString((TCHAR *)Extension::LowercaseArray);
+	return	Runtime.CopyString(LowerCaseArray);
 }
-TCHAR * Extension::DigitArrayFunction()
+TCHAR * Extension::DigitArrayKey()
 {
-
-	
-	return Runtime.CopyString((TCHAR *)Extension::DigitArray);
+	return	Runtime.CopyString(NumberArray);
 }

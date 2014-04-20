@@ -5,38 +5,38 @@ void Extension::EditUppercaseArray(TCHAR * NewKey)
 {
 	if(_tcslen(NewKey) == 26)
 	{
-		strcpy(Extension::UppercaseArray, (char *)NewKey);
+		_tcscpy(UpperCaseArray, NewKey);
 	}
 
 	else
 	{
 		// Valid testing
-		Runtime.GenerateEvent(0);
+		Runtime.GenerateEvent(WrongKeyLength);
 	}
 }
 void Extension::EditLowercaseArray(TCHAR * NewKey)
 {
 	if(_tcslen(NewKey) == 26)
 	{
-		strcpy(Extension::LowercaseArray, (char *)NewKey);
+		_tcscpy(LowerCaseArray, NewKey);
 	}
 
 	else
 	{
-		// Valid testing
-		Runtime.GenerateEvent(0);
+		// Validation test
+		Runtime.GenerateEvent(WrongKeyLength);
 	}
 }
 void Extension::EditDigitArray(TCHAR * NewKey)
 {
 	if(_tcslen(NewKey) == 10)
 	{
-		strcpy(Extension::DigitArray, (char *)NewKey);
+		_tcscpy(NumberArray, NewKey);
 	}
 
 	else
 	{
-		// Valid testing
-		Runtime.GenerateEvent(0);
+		// Validation test
+		Runtime.GenerateEvent(WrongKeyLength);
 	}
 }

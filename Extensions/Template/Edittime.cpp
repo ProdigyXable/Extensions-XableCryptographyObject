@@ -114,9 +114,9 @@ int WINAPI DLLExport CreateObject(mv _far *mV, fpLevObj loPtr, LPEDATA edPtr)
 //		edPtr->sheight = 48;
 		
 		// Auto Fills the Substitution Keys
-		strcpy(edPtr->UppercaseArray, "ABCDEFGHIJKLMNOPQRSTUVWXYZ\0");
-		strcpy(edPtr->LowercaseArray, "abcdefghijklmnopqrstuvwxyz\0");
-		strcpy(edPtr->DigitArray, "0123456789\0");
+		_tcscpy(edPtr->UppercaseArray, (const TCHAR *)"ABCDEFGHIJKLMNOPQRSTUVWXYZ\0");
+		_tcscpy(edPtr->LowercaseArray, (const TCHAR *)"abcdefghijklmnopqrstuvwxyz\0");
+		_tcscpy(edPtr->DigitArray, (const TCHAR *)"0123456789\0");
         return 0;
 	}
 #endif // !defined(RUN_ONLY)
@@ -495,7 +495,7 @@ void WINAPI DLLExport SetPropValue(LPMV mV, LPEDATA edPtr, UINT nPropID, LPVOID 
 			if(strlen(pStr) == 26)
 			{	
 				// Same size : simply copy
-				strcpy(edPtr->UppercaseArray, pStr);
+				_tcscpy(edPtr->UppercaseArray, (TCHAR *)pStr);
 			}
 		}
 		break;
@@ -510,7 +510,7 @@ void WINAPI DLLExport SetPropValue(LPMV mV, LPEDATA edPtr, UINT nPropID, LPVOID 
 			if(strlen(pStr) == 26)
 			{	
 				// Same size : simply copy
-				strcpy(edPtr->LowercaseArray, pStr);
+				_tcscpy(edPtr->LowercaseArray, (TCHAR *)pStr);
 			}
 		}
 		break;
@@ -526,7 +526,7 @@ void WINAPI DLLExport SetPropValue(LPMV mV, LPEDATA edPtr, UINT nPropID, LPVOID 
 			if(strlen(pStr) == 10)
 			{	
 				// Same size : simply copy
-				strcpy(edPtr->DigitArray, pStr);
+				_tcscpy(edPtr->DigitArray, (TCHAR *)pStr);
 			}
 		}
 		break;
