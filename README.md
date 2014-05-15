@@ -1,6 +1,6 @@
 <b><i>Xable Cryptography Object</i></b>
 
-Allows for basic encryption techniques within MMf2 & Clickteam Fusion
+Allows for basic encryption techniques within MMF2 & Clickteam Fusion
 
 <hr/>
 <i>Notes</i>
