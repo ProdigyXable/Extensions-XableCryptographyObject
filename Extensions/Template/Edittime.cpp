@@ -25,6 +25,8 @@ enum {
 //	PROPID_CHECK,
 //	PROPID_COMBO,
 //	PROPID_COLOR,
+	VersionGroup,
+	Version,
 	SubstitutionKeys,
 	UpperCharArray,
 	LowerCharArray,
@@ -54,7 +56,9 @@ PropData Properties[] = {
 //	PropData_CheckBox	(PROPID_CHECK,		IDS_PROP_CHECK,			IDS_PROP_CHECK_INFO),
 //	PropData_ComboBox	(PROPID_COMBO,		IDS_PROP_COMBO,			IDS_PROP_COMBO,	ComboList),
 //	PropData_Color		(PROPID_COLOR,		IDS_PROP_COLOR,			IDS_PROP_COLOR_INFO),
-		PropData_Group		(SubstitutionKeys,		(int)"Substitution Keys",					(int)"Properties for Substitutions"),
+		PropData_Group		(VersionGroup,			(int)"Extension Version",					(int)"Extension Version Number"),
+		PropData_StaticString(Version,				(int)"Version",								(int)" "),
+		PropData_Group		(SubstitutionKeys,		(int)"Substitution Keys",					(int)"Properties for Substitutions"),	
 		PropData_EditString	(UpperCharArray,		(int)"Uppercase Substitution Key",			(int)" "),
 		PropData_EditString	(LowerCharArray,		(int)"Lowercase Substitution Key",			(int)" "),
 		PropData_EditString	(DigitArray,			(int)"Digit Substitution Key",				(int)" "),
@@ -420,6 +424,8 @@ LPVOID WINAPI DLLExport GetPropValue(LPMV mV, LPEDATA edPtr, UINT nPropID)
 //		return new CPropDWordValue(edPtr->dwColor);
 //
 // Returns a string
+	case Version:
+		return new CPropStringValue("May 13th, 2014");
 	case UpperCharArray:
 		return new CPropDataValue((LPSTR)&edPtr->UppercaseArray);
 	case LowerCharArray:
