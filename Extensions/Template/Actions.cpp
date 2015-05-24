@@ -10,7 +10,7 @@ void Extension::EditUppercaseArray(TCHAR * NewKey)
 
 	else
 	{
-		// Valid testing
+		// Validation testing
 		Runtime.GenerateEvent(WrongKeyLength);
 	}
 }

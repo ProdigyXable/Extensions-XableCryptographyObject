@@ -425,7 +425,7 @@ LPVOID WINAPI DLLExport GetPropValue(LPMV mV, LPEDATA edPtr, UINT nPropID)
 //
 // Returns a string
 	case Version:
-		return new CPropStringValue("May 13th, 2014");
+		return new CPropStringValue("May 23rd, 2015");
 	case UpperCharArray:
 		return new CPropDataValue((LPSTR)&edPtr->UppercaseArray);
 	case LowerCharArray:
